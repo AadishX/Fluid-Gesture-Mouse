@@ -14,7 +14,7 @@ RIGHT_DOWN = 0x0008
 RIGHT_UP = 0x0010
 
 # Smoothing factor
-diddy_oil = 0.3
+diddy_oil = 0.5
 prev_x, prev_y = 0, 0  # Initial smoothed positions
 
 # MediaPipe setup

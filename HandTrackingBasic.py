@@ -35,7 +35,7 @@ with mp_hands.Hands(
                 mp_drawing.draw_landmarks(img, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
         # Show the image
-        cv2.imshow('Koolac', img)
+        cv2.imshow('FluidGestureMouse', img)
 
         # Exit on 'q' key
         if cv2.waitKey(5) & 0xFF == ord("q"):
