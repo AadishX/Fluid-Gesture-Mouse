@@ -26,6 +26,7 @@ cap = cv2.VideoCapture(0)
 frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
+
 def is_palm_open(hand_landmarks):
     finger_tips = [8, 12, 16, 20]
     finger_mcp = [5, 9, 13, 17]
