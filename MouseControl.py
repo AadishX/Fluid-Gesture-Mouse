@@ -3,7 +3,7 @@ import mediapipe as mp
 import ctypes
 
 # Set screen resolution manual
-screen_width, screen_height = 1920, 1080
+screen_width, screen_height =  2560, 1440
 
 # Win32 mouse controls
 SetCursorPos = ctypes.windll.user32.SetCursorPos
@@ -14,7 +14,7 @@ RIGHT_DOWN = 0x0008
 RIGHT_UP = 0x0010
 
 # Smoothing factor
-Smoothener = 0.4
+diddy_oil = 0.3
 prev_x, prev_y = 0, 0  # Initial smoothed positions
 
 # MediaPipe setup
@@ -66,8 +66,8 @@ with mp_hands.Hands(max_num_hands=2, min_detection_confidence=0.7, min_tracking_
                 screen_y = int(y_norm * screen_height)
 
                 # Smooth position
-                prev_x = int(Smoothener * screen_x + (1 - Smoothener) * prev_x)
-                prev_y = int(Smoothener * screen_y + (1 - Smoothener) * prev_y)
+                prev_x = int(diddy_oil * screen_x + (1 - diddy_oil) * prev_x)
+                prev_y = int(diddy_oil * screen_y + (1 - diddy_oil) * prev_y)
 
                 if is_palm_open(hand_landmarks):
                     SetCursorPos(prev_x, prev_y)
