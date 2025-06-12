@@ -3,6 +3,8 @@ import mediapipe as mp
 import ctypes
 import time
 
+
+screen_width, screen_height =  2560, 1440
 # Space bar key event
 KEYEVENTF_KEYDOWN = 0x0000
 KEYEVENTF_KEYUP = 0x0002
