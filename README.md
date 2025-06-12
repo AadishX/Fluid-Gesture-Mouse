@@ -7,7 +7,7 @@ A Program to control your keyboard/mouse using your hands!
 - Left fist for left, Right fist for right click
 - TBA Middle click and scroll functions, linux and mac support, code cleanup
 
-- #KeyboardControl
+#KeyboardControl
 - Press spacebar using pinch
 - TBA Other keyboard functions
 
