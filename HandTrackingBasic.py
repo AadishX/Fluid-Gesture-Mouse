@@ -21,6 +21,7 @@ with mp_hands.Hands(
             continue
 
         # Convert image to RGB
+        img = cv2.flip(img, 1)
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         # Process the frame and find hands
