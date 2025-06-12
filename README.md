@@ -1,4 +1,4 @@
-# VSC-Code
+# Fluid-Gesture-Mouse
 
 A Program to control your mouse using your hands!
 
