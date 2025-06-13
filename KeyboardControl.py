@@ -46,6 +46,24 @@ def draw_palm_gap_lines(img, hand_landmarks):
         cv2.circle(img, (x1, y1), 6, (0, 255, 0), -1)
         cv2.circle(img, (x2, y2), 6, (0, 255, 0), -1)
 
+def draw_pretty_landmarks(img, hand_landmarks):
+    h, w, _ = img.shape
+    # Neon green color for lines
+    line_color = (57, 255, 20)  # Neon green (BGR)
+    connections = mp_hands.HAND_CONNECTIONS
+    for connection in connections:
+        start_idx, end_idx = connection
+        x1, y1 = int(hand_landmarks.landmark[start_idx].x * w), int(hand_landmarks.landmark[start_idx].y * h)
+        x2, y2 = int(hand_landmarks.landmark[end_idx].x * w), int(hand_landmarks.landmark[end_idx].y * h)
+        cv2.line(img, (x1, y1), (x2, y2), line_color, 4, cv2.LINE_AA)
+    # Draw all landmarks as filled red circles with a thinner white border
+    for idx, lm in enumerate(hand_landmarks.landmark):
+        x, y = int(lm.x * w), int(lm.y * h)
+        # Thinner white border
+        cv2.circle(img, (x, y), 7, (255, 255, 255), -1, cv2.LINE_AA)
+        # Inner red dot
+        cv2.circle(img, (x, y), 5, (0, 0, 255), -1, cv2.LINE_AA)
+
 with mp_hands.Hands(max_num_hands=2, min_detection_confidence=0.7, min_tracking_confidence=0.6) as hands:
     while cap.isOpened():
         success, img = cap.read()
@@ -61,6 +79,7 @@ with mp_hands.Hands(max_num_hands=2, min_detection_confidence=0.7, min_tracking_
             for i, hand_landmarks in enumerate(results.multi_hand_landmarks):
                 mp_drawing.draw_landmarks(img, hand_landmarks, mp_hands.HAND_CONNECTIONS)
                 draw_palm_gap_lines(img, hand_landmarks)
+                draw_pretty_landmarks(img, hand_landmarks)
 
                 if is_any_pinch(hand_landmarks):
                     now = time.time()
