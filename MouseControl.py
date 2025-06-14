@@ -14,7 +14,7 @@ RIGHT_DOWN = 0x0008
 RIGHT_UP = 0x0010
 
 # Smoothing factor
-diddy_oil = 0.5
+smoothener = 0.5
 prev_x, prev_y = 0, 0  # Initial smoothed positions
 
 # MediaPipe setup
@@ -86,8 +86,8 @@ with mp_hands.Hands(max_num_hands=2, min_detection_confidence=0.7, min_tracking_
                 screen_y = int(y_norm * screen_height)
 
                 # Smooth position
-                prev_x = int(diddy_oil * screen_x + (1 - diddy_oil) * prev_x)
-                prev_y = int(diddy_oil * screen_y + (1 - diddy_oil) * prev_y)
+                prev_x = int(smoothener * screen_x + (1 - smoothener) * prev_x)
+                prev_y = int(smoothener * screen_y + (1 - smoothener) * prev_y)
 
                 if is_palm_open(hand_landmarks):
                     SetCursorPos(prev_x, prev_y)
