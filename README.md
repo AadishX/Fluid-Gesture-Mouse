@@ -9,6 +9,8 @@ A Program to control your keyboard/mouse using your hands!
 
 #KeyboardControl
 - Press spacebar using pinch
-- TBA Other keyboard functions
+- TBA Other keyboard functions (arrows added in seperate file. Hand signals explained within code in the form of comments)
+
+
 
 PS : HandTracking.py is a test for whether hands/fingers can be tracked properly.
